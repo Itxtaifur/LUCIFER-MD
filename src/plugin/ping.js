@@ -8,21 +8,15 @@ const ping = async (m, sock) => {
     const end = new Date().getTime();
     const responseTime = (end - start) / 1000;
 
-    const nima = require("@whiskeysockets/baileys")
-var inital = new Date().getTime();
-let ping = await conn.sendMessage(from , { text: '*_Pinging to taifur Module..._* ❗'  } )
-var final = new Date().getTime();
-await conn.sendMessage(from, { text : '◍○○○○' , edit : ping.key })
+    
+    const text = `*_ᴍᴀꜱᴛᴇʀ-ᴍᴅ ᴘɪɴɢ ꜱᴘᴇᴇᴅ: ${responseTime.toFixed(2)} ᴍꜱ_*`;
+    await conn.sendMessage(from, { text : '◍○○○○' , edit : ping.key })
 await conn.sendMessage(from, { text : '◍◍○○○' , edit : ping.key })
 await conn.sendMessage(from, { text : '◍◍◍○○' , edit : ping.key })
 await conn.sendMessage(from, { text : '◍◍◍◍○' , edit : ping.key })
 await conn.sendMessage(from, { text : '◍◍◍◍◍' , edit : ping.key })
-return await conn.sendMessage(from, { text : '📍️ *Pong ' + (final - inital) + ' Ms* ' , edit : ping.key }){
-} catch (e) {
-reply('*Error !!*')
-  
-l(e)
-}
+    sock.sendMessage(m.from, { text }, { quoted: m });
+  }
 }
 
 
