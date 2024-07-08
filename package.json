@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "pm2 start src/index.js --deep-monitoring --attach --name LUCIFER-MD",
-    "stop": "pm2 stop LUCIFER-MD",d
+    "stop": "pm2 stop LUCIFER-MD",
     "restart": "pm2 restart LUCIFER-MD"
   },
   "keywords": ["LUCIFER-MD", "whatsapp-bot", "whatsapp md bot"],
