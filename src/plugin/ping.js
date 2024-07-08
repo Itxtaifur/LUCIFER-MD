@@ -17,12 +17,13 @@ await conn.sendMessage(from, { text : '◍◍○○○' , edit : ping.key })
 await conn.sendMessage(from, { text : '◍◍◍○○' , edit : ping.key })
 await conn.sendMessage(from, { text : '◍◍◍◍○' , edit : ping.key })
 await conn.sendMessage(from, { text : '◍◍◍◍◍' , edit : ping.key })
-return await conn.sendMessage(from, { text : '📍️ *Pong ' + (final - inital) + ' Ms* ' , edit : ping.key })
+return await conn.sendMessage(from, { text : '📍️ *Pong ' + (final - inital) + ' Ms* ' , edit : ping.key }){
 } catch (e) {
 reply('*Error !!*')
+  
 l(e)
 }
-})
+}
 
 
 export default ping;
