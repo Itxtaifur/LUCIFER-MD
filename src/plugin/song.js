@@ -1,5 +1,6 @@
-import ytdl from 'ytdl-core'
+import ytdl from 'youtubedl-core'
 import yts from 'yt-search'
+
 
 const song = async (m, Matrix) => {
 const prefixMatch = m.body.match(/^[\\/!#.]/);
@@ -39,12 +40,12 @@ try {
     url: videoInfo.thumbnail,
   },
   caption: `
-╭──═❮ *⬇️👨‍💻YouTube Player👨‍💻⬇️* ❯═─┈•
-│✑ *🔰Title:* ${videoInfo.title}
-│✑ *🔰duration:* ${videoInfo.timestamp}
-│✑ *🔰Uploaded* ${videoInfo.ago}
-│✑ *🔰Uploader:* ${videoInfo.author.name}
-│✑ *🔰Link:* ${videoInfo.url}
+╭──═❮ *YouTube Player* ❯═─┈•
+│✑ *🎵Title:* ${videoInfo.title}
+│✑ *🕐duration:* ${videoInfo.timestamp}
+│✑ *🕥Uploaded* ${videoInfo.ago}
+│✑ *📽Channel:* ${videoInfo.author.name}
+│✑ *🔗Link:* ${videoInfo.url}
 ╰────────────────❃ 
 `, 
 };
@@ -83,12 +84,12 @@ try {
     url: firstVideo.thumbnail,
   },
   caption: `
-╭──═❮ *👨‍💻⬇️YouTube Player⬇️👨‍💻* ❯═─┈•
-│✑ *🔰Title:* ${firstVideo.title}
-│✑ *🔰duration:* ${firstVideo.timestamp}
-│✑ *🔰Uploaded* ${firstVideo.ago}
-│✑ *🔰Uploader:* ${firstVideo.author.name}
-│✑ *🔰Link:* ${videoInfo.url}
+╭──═❮  *YouTube Player*  ❯═─┈•
+│✑ *🎵Title:* ${firstVideo.title}
+│✑ *🕐duration:* ${firstVideo.timestamp}
+│✑ *📀Uploaded* ${firstVideo.ago}
+│✑ *📽Uploader:* ${firstVideo.author.name}
+│✑ *🔗Link:* ${videoInfo.url}
 ╰────────────────❃ 
 `, 
 };
