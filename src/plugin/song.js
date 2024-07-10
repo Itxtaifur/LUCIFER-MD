@@ -1,8 +1,5 @@
-import ytdl from 'ytdl-core';
-import yts from 'yt-search';
-import pkgg from 'nayan-media-downloader';
-const {ytdown} = pkgg; 
-
+import ytdl from 'ytdl-core'
+import yts from 'yt-search'
 
 const song = async (m, Matrix) => {
 const prefixMatch = m.body.match(/^[\\/!#.]/);
@@ -10,7 +7,7 @@ const prefixMatch = m.body.match(/^[\\/!#.]/);
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
   const text = m.body.slice(prefix.length + cmd.length).trim();
   
-  const validCommands = ['song', 'ytmp3', 'music'];
+  const validCommands = ['play', 'ytmp3', 'music'];
 
    if (validCommands.includes(cmd)) {
   
@@ -42,12 +39,12 @@ try {
     url: videoInfo.thumbnail,
   },
   caption: `
-╭──═❮ *YouTube Player* ❯═─┈•
-│✑ *🎵Title:* ${videoInfo.title}
-│✑ *🕐duration:* ${videoInfo.timestamp}
-│✑ *🕥Uploaded* ${videoInfo.ago}
-│✑ *📽Channel:* ${videoInfo.author.name}
-│✑ *🔗Link:* ${videoInfo.url}
+╭──═❮ *⬇️👨‍💻YouTube Player👨‍💻⬇️* ❯═─┈•
+│✑ *🔰Title:* ${videoInfo.title}
+│✑ *🔰duration:* ${videoInfo.timestamp}
+│✑ *🔰Uploaded* ${videoInfo.ago}
+│✑ *🔰Uploader:* ${videoInfo.author.name}
+│✑ *🔰Link:* ${videoInfo.url}
 ╰────────────────❃ 
 `, 
 };
@@ -86,12 +83,12 @@ try {
     url: firstVideo.thumbnail,
   },
   caption: `
-╭──═❮  *YouTube Player*  ❯═─┈•
-│✑ *🎵Title:* ${firstVideo.title}
-│✑ *🕐duration:* ${firstVideo.timestamp}
-│✑ *📀Uploaded* ${firstVideo.ago}
-│✑ *📽Uploader:* ${firstVideo.author.name}
-│✑ *🔗Link:* ${videoInfo.url}
+╭──═❮ *👨‍💻⬇️YouTube Player⬇️👨‍💻* ❯═─┈•
+│✑ *🔰Title:* ${firstVideo.title}
+│✑ *🔰duration:* ${firstVideo.timestamp}
+│✑ *🔰Uploaded* ${firstVideo.ago}
+│✑ *🔰Uploader:* ${firstVideo.author.name}
+│✑ *🔰Link:* ${videoInfo.url}
 ╰────────────────❃ 
 `, 
 };
