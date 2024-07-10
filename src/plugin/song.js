@@ -1,8 +1,7 @@
 import ytdl from 'ytdl-core';
 import yts from 'yt-search';
-import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
-const { generateWAMessageFromContent, proto } = pkg;
-let audioIndex = 1001;
+import pkgg from 'nayan-media-downloader';
+const {ytdown} = pkgg; 
 
 
 const song = async (m, Matrix) => {
