@@ -2,9 +2,6 @@ import ytdl from 'ytdl-core'
 import yts from 'yt-search'
 import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
 const { generateWAMessageFromContent, proto } = pkg;
-
-const videoMap = new Map();
-let videoIndex = 1; 
 let audioIndex = 1001;
 
 
