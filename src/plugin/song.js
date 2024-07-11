@@ -1,5 +1,5 @@
-import ytdl from 'youtubedl-core'
-import yts from 'yt-search'
+import ytdl from 'ytdl-core';
+import yts from 'yt-search';
 
 
 const song = async (m, Matrix) => {
