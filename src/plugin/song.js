@@ -1,5 +1,5 @@
-import ytdl from 'youtubedl-core'
-import yts from 'yt-search'
+import ytdl from 'youtubedl-core';
+import yts from 'yt-search';
 
 
 const song = async (m, Matrix) => {
@@ -97,7 +97,7 @@ try {
           //await Matrix.sendMessage(m.from, doc, { quoted: m })
         let doc = {
         audio: finalAudioBuffer,
-        mimetype: 'audio/mpeg',
+        mimetype: 'audio/mp3',
         ptt: true,
         waveform:  [100, 0, 100, 0, 100, 0, 100],
         fileName: "Matrix.mp3",
