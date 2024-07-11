@@ -74,4 +74,4 @@ handler.command = ['ytmp3', 'song', 'ytmp3doc']
 handler.exp = 0;
 handler.diamond = false;
 
-export default handler;
+export default song;
