@@ -1,4 +1,4 @@
-import ytdl from 'ytdl-core';
+import ytdl from '@distube/ytdl-core';
 import yts from 'yt-search';
 import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
 const { generateWAMessageFromContent, proto } = pkg;
@@ -86,7 +86,7 @@ const song = async (m, Matrix) => {
             },
             interactiveMessage: proto.Message.InteractiveMessage.create({
               body: proto.Message.InteractiveMessage.Body.create({
-                text: `Video Downloader\n*🔍Title:* ${videoDetails.title}\n*✍️ Author:* ${videoDetails.author}\n*🥸Views:* ${videoDetails.views}\n*👍 Likes:* ${videoDetails.likes}\n*📆 Upload Date:* ${videoDetails.uploadDate}\n*🏮 Duration:* ${videoDetails.duration}\n`
+                text: `> *LUCIFER-MD VIDEO DOWNLOADER*\n> *TITLE:* ${videoDetails.title}\n> *AUTHOR:* ${videoDetails.author}\n> *VIEWS:* ${videoDetails.views}\n> *LIKES:* ${videoDetails.likes}\n> *UPLOAD DATE:* ${videoDetails.uploadDate}\n> *DURATION:* ${videoDetails.duration}\n`
               }),
               footer: proto.Message.InteractiveMessage.Footer.create({
                 text: "© Powered By Ethix-MD"
@@ -121,7 +121,7 @@ const song = async (m, Matrix) => {
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
                   newsletterJid: '120363249960769123@newsletter',
-                  newsletterName: "Ethix-MD",
+                  newsletterName: "𝗟𝗨𝗖𝗜𝗙𝗘𝗥-𝗠𝗗",
                   serverMessageId: 143
                 }
               }
@@ -153,14 +153,25 @@ const song = async (m, Matrix) => {
 
         const finalVideoBuffer = await streamToBuffer(videoStream);
 
-        await Matrix.sendMessage(m.from, {
+        const content = {
           document: finalVideoBuffer,
           mimetype: 'video/mp4',
-          fileName: `${selectedQuality.title}`,
-          caption: `> © Powered By Ethix-MD\n\n*${selectedQuality.quality}*`
-        }, {
-          quoted: m
-        });
+          fileName: `${selectedQuality.title}.mp4`,
+          caption: `*DOWNLOADED BY 𝗟𝗨𝗖𝗜𝗙𝗘𝗥-𝗠𝗗*`,
+          contextInfo: {
+            externalAdReply: {
+              showAdAttribution: true,
+              title: selectedQuality.title,
+              body: 'Ethix-MD',
+              thumbnailUrl: selectedQuality.thumbnailUrl,
+              sourceUrl: selectedQuality.videoUrl,
+              mediaType: 1,
+              renderLargerThumbnail: true
+            }
+          }
+        };
+
+        await Matrix.sendMessage(m.from, content, { quoted: m });
       } catch (error) {
         console.error("Error fetching video details:", error);
         m.reply(`Error fetching video details: ${error.message}`);
