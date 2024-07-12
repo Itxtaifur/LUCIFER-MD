@@ -6,15 +6,6 @@ const { generateWAMessageFromContent, proto } = pkg;
 const videoMap = new Map();
 let videoIndex = 1;
 
-const formats = [
-  { itag: 160, quality: '144P' },
-  { itag: 133, quality: '240p' },
-  { itag: 134, quality: '360p' },
-  { itag: 135, quality: '480p' },
-  { itag: 136, quality: '720p' },
-  { itag: 137, quality: '1080p' }
-];
-
 const song = async (m, Matrix) => {
   let selectedListId;
   const selectedButtonId = m?.message?.templateButtonReplyMessage?.selectedId;
@@ -39,11 +30,11 @@ const song = async (m, Matrix) => {
 
   if (validCommands.includes(cmd)) {
     if (!text || !ytdl.validateURL(text)) {
-      return m.reply('*Please provide a valid YouTube URL.*');
+      return m.reply('Please provide a valid YouTube URL.');
     }
 
     try {
-      await m.React("💼");
+      await m.React("🕘");
 
       const info = await ytdl.getInfo(text);
 
@@ -60,16 +51,31 @@ const song = async (m, Matrix) => {
 
       const videoInfo = await yts({ videoId: ytdl.getURLVideoID(videoDetails.videoUrl) });
 
-      const qualityButtons = formats.map((format, index) => {
-        const uniqueId = videoIndex + index;
-        videoMap.set(uniqueId, { ...format, videoId: info.videoDetails.videoId, ...videoDetails });
-        return {
-          "header": "",
-          "title": `${format.quality}`,
-          "description": `Select ${format.quality} quality`,
-          "id": `quality_${uniqueId}`
-        };
-      });
+      // Filter formats to only include those with both audio and video
+      const formats = info.formats.filter(format => format.hasAudio && format.hasVideo);
+
+      // Map of quality labels to the respective format itags
+      const desiredQualities = {
+        '144p': formats.find(f => f.qualityLabel === '144p')?.itag,
+        '240p': formats.find(f => f.qualityLabel === '240p')?.itag,
+        '360p': formats.find(f => f.qualityLabel === '360p')?.itag,
+        '480p': formats.find(f => f.qualityLabel === '480p')?.itag,
+        '720p': formats.find(f => f.qualityLabel === '720p')?.itag,
+        '1080p': formats.find(f => f.qualityLabel === '1080p')?.itag,
+      };
+
+      const qualityButtons = Object.entries(desiredQualities).map(([quality, itag], index) => {
+        if (itag) {
+          const uniqueId = videoIndex + index;
+          videoMap.set(uniqueId, { itag, videoId: info.videoDetails.videoId, ...videoDetails, quality });
+          return {
+            "header": "",
+            "title": `${quality}`,
+            "description": `Select ${quality} quality`,
+            "id": `quality_${uniqueId}`
+          };
+        }
+      }).filter(Boolean);
 
       const msg = generateWAMessageFromContent(m.from, {
         viewOnceMessage: {
@@ -80,10 +86,10 @@ const song = async (m, Matrix) => {
             },
             interactiveMessage: proto.Message.InteractiveMessage.create({
               body: proto.Message.InteractiveMessage.Body.create({
-                text: `🔰Video Downloader🔰\n*🔍Title:* ${videoDetails.title}\n*✍️ Author:* ${videoDetails.author}\n*🥸Views:* ${videoDetails.views}\n*👍 Likes:* ${videoDetails.likes}\n*📆 Upload Date:* ${videoDetails.uploadDate}\n*🏮 Duration:* ${videoDetails.duration}\n`
+                text: `Video Downloader\n*🔍Title:* ${videoDetails.title}\n*✍️ Author:* ${videoDetails.author}\n*🥸Views:* ${videoDetails.views}\n*👍 Likes:* ${videoDetails.likes}\n*📆 Upload Date:* ${videoDetails.uploadDate}\n*🏮 Duration:* ${videoDetails.duration}\n`
               }),
               footer: proto.Message.InteractiveMessage.Footer.create({
-                text: "© 𝐂ʀᴇᴀᴛᴇᴅ 𝐁ʏ 𝐌ʀ 𝐒ᴀʜᴀɴ 𝐎ꜰᴄ"
+                text: "© Powered By Ethix-MD"
               }),
               header: proto.Message.InteractiveMessage.Header.create({
                 ...(await prepareWAMessageMedia({ image: { url: videoInfo.thumbnail } }, { upload: Matrix.waUploadToServer })),
@@ -115,7 +121,7 @@ const song = async (m, Matrix) => {
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
                   newsletterJid: '120363249960769123@newsletter',
-                  newsletterName: "MASTER-MD-V3",
+                  newsletterName: "Ethix-MD",
                   serverMessageId: 143
                 }
               }
@@ -129,7 +135,7 @@ const song = async (m, Matrix) => {
       });
       await m.React("✅");
 
-      videoIndex += formats.length;
+      videoIndex += qualityButtons.length;
     } catch (error) {
       console.error("Error processing your request:", error);
       m.reply('Error processing your request.');
@@ -143,9 +149,7 @@ const song = async (m, Matrix) => {
       try {
         const videoUrl = `https://www.youtube.com/watch?v=${selectedQuality.videoId}`;
 
-        
-        const videoStream = ytdl(videoUrl, { filter: 'audioandvideo', quality: selectedQuality.itag });
-       
+        const videoStream = ytdl(videoUrl, { quality: selectedQuality.itag });
 
         const finalVideoBuffer = await streamToBuffer(videoStream);
 
@@ -153,7 +157,7 @@ const song = async (m, Matrix) => {
           document: finalVideoBuffer,
           mimetype: 'video/mp4',
           fileName: `${selectedQuality.title}`,
-          caption: `> © 𝐂ʀᴇᴀᴛᴇᴅ 𝐁ʏ 𝐌ʀ 𝐒ᴀʜᴀɴ 𝐎ꜰᴄ\n\n*${selectedQuality.quality}*`
+          caption: `> © Powered By Ethix-MD\n\n*${selectedQuality.quality}*`
         }, {
           quoted: m
         });
