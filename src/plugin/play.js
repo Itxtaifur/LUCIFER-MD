@@ -100,10 +100,10 @@ const playcommand = async (m, Matrix) => {
             },
             interactiveMessage: proto.Message.InteractiveMessage.create({
               body: proto.Message.InteractiveMessage.Body.create({
-                text: `*𝞢𝙏𝞖𝞘𝞦-𝞛𝘿 YOUTUBE SEARCH*\n\n> *TITLE:* ${currentResult.title}\n> *AUTHOR:* ${currentResult.author.name}\n> *VIEWS:* ${currentResult.views}\n> *DURATION:* ${currentResult.timestamp}\n`
+                text: `*𝗟𝗨𝗖𝗜𝗙𝗘𝗥-𝗠𝗗 YOUTUBE SEARCH*\n\n> *TITLE:* ${currentResult.title}\n> *AUTHOR:* ${currentResult.author.name}\n> *VIEWS:* ${currentResult.views}\n> *DURATION:* ${currentResult.timestamp}\n`
               }),
               footer: proto.Message.InteractiveMessage.Footer.create({
-                text: "© Powered By 𝞢𝙏𝞖𝞘𝞦-𝞛𝘿"
+                text: "© Powered By 𝑇𝛥𝛪𝐹𝑈𝑅🥀"
               }),
               header: proto.Message.InteractiveMessage.Header.create({
                 ...(await prepareWAMessageMedia({ image: { url: thumbnailUrl } }, { upload: Matrix.waUploadToServer })),
@@ -193,10 +193,10 @@ const playcommand = async (m, Matrix) => {
             },
             interactiveMessage: proto.Message.InteractiveMessage.create({
               body: proto.Message.InteractiveMessage.Body.create({
-                text: `*𝞢𝙏𝞖𝞘𝞦-𝞛𝘿 YOUTUBE SEARCH*\n\n> *🔍TITLE:* ${currentResult.title}\n> *AUTHOR:* ${currentResult.author.name}\n> *VIEWS:* ${currentResult.views}\n> *DURATION:* ${currentResult.timestamp}\n`
+                text: `*𝗟𝗨𝗖𝗜𝗙𝗘𝗥-𝗠𝗗 YOUTUBE SEARCH*\n\n> *🔍TITLE:* ${currentResult.title}\n> *AUTHOR:* ${currentResult.author.name}\n> *VIEWS:* ${currentResult.views}\n> *DURATION:* ${currentResult.timestamp}\n`
               }),
               footer: proto.Message.InteractiveMessage.Footer.create({
-                text: "© Powered By 𝞢𝙏𝞖𝞘𝞦-𝞛𝘿"
+                text: "© Powered By 𝑇𝛥𝛪𝐹𝑈𝑅🥀"
               }),
               header: proto.Message.InteractiveMessage.Header.create({
                 ...(await prepareWAMessageMedia({ image: { url: thumbnailUrl } }, { upload: Matrix.waUploadToServer })),
@@ -249,7 +249,7 @@ const playcommand = async (m, Matrix) => {
                 externalAdReply: {
                   showAdAttribution: true,
                   title: `${selectedMedia.title}`,
-                  body: 'Ethix-MD',
+                  body: 'LUCIFER-MD',
                   thumbnailUrl: `${selectedMedia.thumbnail}`,
                   sourceUrl: `${selectedMedia.url}`,
                   mediaType: 1,
@@ -262,7 +262,7 @@ const playcommand = async (m, Matrix) => {
             content = {
               video: finalMediaBuffer,
               mimetype: mimeType,
-              caption: `> TITLE: ${selectedMedia.title}\n\n*Downloaded by 𝞢𝙏𝞖𝞘𝞦-𝞛𝘿*`
+              caption: `> TITLE: ${selectedMedia.title}\n\n*Downloaded by 𝗟𝗨𝗖𝗜𝗙𝗘𝗥-𝗠𝗗*`
             };
             await Matrix.sendMessage(m.from, content, { quoted: m });
           } else if (type === 'audiodoc' || type === 'videodoc') {
@@ -270,14 +270,14 @@ const playcommand = async (m, Matrix) => {
               document: finalMediaBuffer,
               mimetype: mimeType,
               fileName: `${selectedMedia.title}.${type === 'audiodoc' ? 'mp3' : 'mp4'}`,
-              caption: `> *TITLE:* ${selectedMedia.title}\n\n*Downloaded by 𝞢𝙏𝞖𝞘𝞦-𝞛𝘿*`
+              caption: `> *TITLE:* ${selectedMedia.title}\n\n*Downloaded by 𝗟𝗨𝗖𝗜𝗙𝗘𝗥-𝗠𝗗*`
             };
             await Matrix.sendMessage(m.from, content, {
               contextInfo: {
                 externalAdReply: {
                   showAdAttribution: true,
                   title: `${selectedMedia.title}`,
-                  body: 'Ethix-MD',
+                  body: 'LUCIFER-MD',
                   thumbnailUrl: `${selectedMedia.thumbnail}`,
                   sourceUrl: `${selectedMedia.url}`,
                   mediaType: 1,
