@@ -2,8 +2,8 @@ import config from '../../config.cjs';
 
 const deleteMessage = async (m, gss) => {
   try {
-    const botNumber2 = await gss.decodeJid(gss.user.id);
-    const isCreator = [botNumber2, config.OWNER_NUMBER + '@s.whatsapp.net'].includes(m.sender);
+    const botNumber = await gss.decodeJid(gss.user.id);
+    const isCreator = [botNumber, config.OWNER_NUMBER + '@s.whatsapp.net'].includes(m.sender);
     const prefixMatch = m.body.match(/^[\\/!#.]/);
     const prefix = prefixMatch ? prefixMatch[0] : '/';
     const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
@@ -14,12 +14,7 @@ const deleteMessage = async (m, gss) => {
       if (!isCreator) {
         return m.reply("*📛 𝐓ʜɪꜱ 𝐈ꜱ 𝐀ɴ 𝐎ᴡɴᴇʀ 𝐂ᴏᴍᴍᴀɴᴅ*");
       }
-      if (validCommands.includes(cmd)) {
-      if (!isGroup) {
-        return m.reply("*📛 𝐓ʜɪꜱ 𝐈ꜱ 𝐀ɴ 𝐎ᴡɴᴇʀ 𝐂ᴏᴍᴍᴀɴᴅ*");
-      }
-
-
+      
       if (!m.quoted) {
         return m.reply('✳️ Reply to the message you want to delete');
       }
