@@ -25,7 +25,7 @@ const deleteMessage = async (m, gss) => {
       }
 
       const key = {
-        remoteJid: m.fromMe: true, 
+        remoteJid: m.from, 
         id: m.quoted.key.id,
         participant: m.quoted.key.participant || m.quoted.key.remoteJid
       };
