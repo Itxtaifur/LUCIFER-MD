@@ -17,7 +17,7 @@ const tempMailCommand = async (m, Matrix) => {
             const params = JSON.parse(paramsJson);
             selectedListId = params.id;
         }
-    }
+    } 
 
     const selectedId = selectedListId || selectedButtonId;
 
