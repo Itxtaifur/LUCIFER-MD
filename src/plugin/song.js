@@ -7,13 +7,13 @@ const song = async (m, Matrix) => {
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
   const text = m.body.slice(prefix.length + cmd.length).trim();
 
-  const validCommands = ['song', 'ytmp3', 'music', 'ytmp3doc'];
+  const validCommands = ['play', 'ytmp3', 'music', 'ytmp3doc'];
 
   if (validCommands.includes(cmd)) {
     if (!text) return m.reply('Please provide a YT URL or search query.');
 
     try {
-      await m.React("🕘");
+      await m.React("🎶");
 
       const isUrl = ytdl.validateURL(text);
 
