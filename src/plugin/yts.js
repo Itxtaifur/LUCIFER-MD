@@ -86,10 +86,10 @@ const song = async (m, Matrix) => {
             },
             interactiveMessage: proto.Message.InteractiveMessage.create({
               body: proto.Message.InteractiveMessage.Body.create({
-                text: `*𝞢𝙏𝞖𝞘𝞦-𝞛𝘿 VIDEO DOWNLOADER*\n\n> *TITLE:* _${title}_\n> *AUTHOR:* _${author}_\n> *DURATION:* _${duration}s_\n> *VIEWS:* _${views}_\n> *URL:* _${url}_`
+                text: `*𓆩𝐋𝐔𝐂𝐈𝐅𝐄𝐑𓆪-𝞛𝘿 VIDEO DOWNLOADER*\n\n> *TITLE:* _${title}_\n> *AUTHOR:* _${author}_\n> *DURATION:* _${duration}s_\n> *VIEWS:* _${views}_\n> *URL:* _${url}_`
               }),
               footer: proto.Message.InteractiveMessage.Footer.create({
-                text: "© Powered By Ethix-MD"
+                text: "© Powered By 𓆩𝐋𝐔𝐂𝐈𝐅𝐄𝐑𓆪"
               }),
               header: proto.Message.InteractiveMessage.Header.create({
                 ...(await prepareWAMessageMedia({ image: { url: firstVideo.thumbnail } }, { upload: Matrix.waUploadToServer })),
@@ -173,7 +173,7 @@ const song = async (m, Matrix) => {
        /*  await Matrix.sendMessage(m.from,
             {
               image: { url: thumbnailUrl },
-              caption: `> *TITLE:* ${title}\n> *AUTHOR:* ${author}\n> *DURATION:* ${duration}\n> *© POWERED BY 𝞢𝙏𝞖𝞘𝞦-𝞛𝘿*`,
+              caption: `> *TITLE:* ${title}\n> *AUTHOR:* ${author}\n> *DURATION:* ${duration}\n> *© POWERED BY 𓆩𝐋𝐔𝐂𝐈𝐅𝐄𝐑𓆪*`,
               contextInfo: {
                 externalAdReply: {
                   showAdAttribution: true,
@@ -217,7 +217,7 @@ const song = async (m, Matrix) => {
             {
               video: finalVideoBuffer,
               mimetype: 'video/mp4',
-              caption: `> *TITLE:* ${title}\n> *AUTHOR:* ${author}\n> *DURATION:* ${duration}\n\n> *POWERED BY Ethix-MD*`,
+              caption: `> *TITLE:* ${title}\n> *AUTHOR:* ${author}\n> *DURATION:* ${duration}\n\n> *POWERED BY 𓆩𝐋𝐔𝐂𝐈𝐅𝐄𝐑𓆪*`,
             },
             { quoted: m }
           );
