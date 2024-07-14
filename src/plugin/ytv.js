@@ -89,7 +89,7 @@ const song = async (m, Matrix) => {
                 text: `> *LUCIFER-MD VIDEO DOWNLOADER*\n> *TITLE:* ${videoDetails.title}\n> *AUTHOR:* ${videoDetails.author}\n> *VIEWS:* ${videoDetails.views}\n> *LIKES:* ${videoDetails.likes}\n> *UPLOAD DATE:* ${videoDetails.uploadDate}\n> *DURATION:* ${videoDetails.duration}\n`
               }),
               footer: proto.Message.InteractiveMessage.Footer.create({
-                text: "© Powered By Ethix-MD"
+                text: "© Powered By 𝐋𝐔𝐂𝐈𝐅𝐄𝐑"
               }),
               header: proto.Message.InteractiveMessage.Header.create({
                 ...(await prepareWAMessageMedia({ image: { url: videoInfo.thumbnail } }, { upload: Matrix.waUploadToServer })),
