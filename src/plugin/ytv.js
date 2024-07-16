@@ -6,7 +6,7 @@ const { generateWAMessageFromContent, proto } = pkg;
 const videoMap = new Map();
 let videoIndex = 1;
 
-const song = async (m, Matrix) => {
+const ytv = async (m, Matrix) => {
   let selectedListId;
   const selectedButtonId = m?.message?.templateButtonReplyMessage?.selectedId;
   const interactiveResponseMessage = m?.message?.interactiveResponseMessage;
@@ -204,4 +204,4 @@ const streamToBuffer = async (stream) => {
   });
 };
 
-export default song;
+export default ytv;
