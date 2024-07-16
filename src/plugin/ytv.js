@@ -162,7 +162,7 @@ const song = async (m, Matrix) => {
             externalAdReply: {
               showAdAttribution: true,
               title: selectedQuality.title,
-              body: 'Ethix-MD',
+              body: 'LUCIFER-MD',
               thumbnailUrl: selectedQuality.thumbnailUrl,
               sourceUrl: selectedQuality.videoUrl,
               mediaType: 1,
