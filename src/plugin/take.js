@@ -18,7 +18,7 @@ const handleTakeCommand = async (m, gss) => {
 
   const quoted = m.quoted || {};
 
-  if (!['imageMessage', 'videoMessage', 'stickerMessage'].includes(quoted.mtype)) {
+  if (!['imageMessage', 'videoMessage', 'sticker'].includes(quoted.mtype)) {
     return m.reply(`Send/Reply with an image or video to use ${prefix + cmd}`);
   }
 
