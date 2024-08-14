@@ -1,4 +1,5 @@
 import fs from 'fs/promises';
+import { Sticker, createSticker, StickerTypes } from 'wa-sticker-formatter';
 
 const handleTakeCommand = async (m, gss) => {
   const prefixMatch = m.body.match(/^[\\/!#.]/);
@@ -18,7 +19,7 @@ const handleTakeCommand = async (m, gss) => {
 
   const quoted = m.quoted || {};
 
-  if (!['imageMessage', 'videoMessage', 'sticker'].includes(quoted.mtype)) {
+  if (!['imageMessage', 'videoMessage', 'StickerTypes'].includes(quoted.mtype)) {
     return m.reply(`Send/Reply with an image or video to use ${prefix + cmd}`);
   }
 
