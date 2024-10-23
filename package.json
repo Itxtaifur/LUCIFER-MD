@@ -65,6 +65,6 @@
     "uuid": "^9.0.1",
     "wa-sticker-formatter": "^4.4.4",
     "yt-search": "^2.11.0",
-    "ytdl-core": "^latest"
+    "ytdl-core": "latest"
   }
 }
